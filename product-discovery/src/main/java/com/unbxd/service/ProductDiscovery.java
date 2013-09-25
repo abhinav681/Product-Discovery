@@ -15,6 +15,8 @@ import org.json.simple.parser.ParseException;
 import com.unbxd.objects.Product;
 import com.unbxd.objects.ProductAttribute;
 
+/**
+ */
 public class ProductDiscovery {
 
 
@@ -23,6 +25,11 @@ public class ProductDiscovery {
 	private HashMap<Long, List<String> > productIdToQueryList = new HashMap<Long, List<String> >();
 	private HashMap<String, List<Product> > queryToProductList = new HashMap<String, List<Product>>();
 	
+	/**
+	 * Method init.
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	void init() throws IOException, ParseException
 	{
 		JSONParser parser = new JSONParser();
@@ -77,15 +84,30 @@ public class ProductDiscovery {
 		}
 	}
 
+	/**
+	 * Constructor for ProductDiscovery.
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public ProductDiscovery() throws IOException, ParseException 
 	{
 		init();
 	}
 	
+	/**
+	 * Method getProductListByQuery.
+	 * @param query String
+	 * @return List<Product>
+	 */
 	public List<Product> getProductListByQuery(String query) {
 		return queryToProductList.get(query);
 	}
 
+	/**
+	 * Method getQueryListByArtist.
+	 * @param artist String
+	 * @return List<String>
+	 */
 	public List<String> getQueryListByArtist(String artist) {
 		return productIdToQueryList.get(artistToProductIdMap.get(artist));
 	}
